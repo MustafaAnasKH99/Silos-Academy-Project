@@ -6,9 +6,9 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "back": "cd back && npm start",
-    "front": "cd front && npm start",
-    "start": "concurrently --kill-others-on-fail --names \"back,front\" \"npm run back\" \"npm run front\"",
-    "postinstall": "cd front && npm install && cd .. && cd back && npm install"
+    "front": "cd front && yarn web",
+    "start": "concurrently --kill-others-on-fail --names \"back,front\" \"npm run back\" \"yarn front web\"",
+    "postinstall": "cd front && yarn install && cd .. && cd back && npm install"
   },
   "keywords": [],
   "author": "",

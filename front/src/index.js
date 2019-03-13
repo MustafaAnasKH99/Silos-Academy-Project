@@ -1,30 +1,30 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+
+// Generate required css
+import iconFont from 'react-native-vector-icons/Fonts/FontAwesome.ttf';
+
 import './index.css';
 import App from './App';
-import Cms from './components/cms.js'
-import { Route, BrowserRouter as Router } from 'react-router-dom'
-import * as serviceWorker from './serviceWorker';
+import registerServiceWorker from './registerServiceWorker';
 
-fetch('//http://localhost:8080/users/')
-  .then( response => response.text())
-  .then( text => console.log(text))
+// https://github.com/oblador/react-native-vector-icons#web-with-webpack
+const iconFontStyles = `@font-face {
+  src: url(${iconFont});
+  font-family: FontAwesome;
+}`;
 
+// Create stylesheet
+const style = document.createElement('style');
+style.type = 'text/css';
+if (style.styleSheet) {
+  style.styleSheet.cssText = iconFontStyles;
+} else {
+  style.appendChild(document.createTextNode(iconFontStyles));
+}
 
-const routing = (
-    <div>
-        <Router>
-            <div>
-                <Route exact path="/" component={App}/>
-                <Route exact path="/cms" component={Cms} />
-            </div>
-        </Router>
-    </div>
-)
+// Inject stylesheet
+document.head.appendChild(style);
 
-ReactDOM.render(routing, document.getElementById('root'));
-
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: http://bit.ly/CRA-PWA
-serviceWorker.unregister();
+ReactDOM.render(<App />, document.getElementById('root'));
+registerServiceWorker();
