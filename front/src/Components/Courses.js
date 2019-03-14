@@ -5,6 +5,7 @@ import styles from './Shared.style';
 import { withRouter } from '../Utils/Routing';
 import withHeader from '../HOCs/withHeader';
 import { compose } from 'redux'
+import Course from './Course'
 
 
 class Courses extends React.Component{
@@ -26,23 +27,11 @@ class Courses extends React.Component{
         console.log(courses_list)
         return(
             <View style={styles.container}>
-                <Text>تصفح الدورات المتاحة على منصتنا هنا!</Text>
                 <View>
-                {
-                    courses_list.map(course => (
-                    <View>
-                        <ListItem
-                            key={course.id}
-                            // leftAvatar={{ source: { uri: l.avatar_url } }}
-                            title={course.course_name}
-                            subtitle={`this is ${course.course_name} sub-name`}
-                        />
-                        <Button 
-                            title={`Start ${course.course_name}`}
-                        />
-                    </View>
-                    ))
-                }
+                    <Text>تصفح الدورات المتاحة على منصتنا هنا!</Text>
+                    <Course 
+                        courses_list={courses_list}
+                    />
                 </View>
             </View>
         )
