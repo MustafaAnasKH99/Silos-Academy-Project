@@ -49,6 +49,19 @@ const initializeDatabase = async () => {
     return rows
   }
 
+  const getCourse = async (id) => {
+    try {
+      const courses_list = await db.all(`SELECT * from courses WHERE id=${id}`)
+      const course = courses_list[0]
+      if(!course){
+        throw new Error(`course ${id} not found`)
+      }
+      return course
+    } catch(e){
+      throw new Error(`couldn't get the course ${id}: `+e.message)
+    } 
+  }
+
   const getCourses = async () => {
     const rows = await db.all("SELECT * FROM courses")
     return rows
@@ -63,6 +76,7 @@ const initializeDatabase = async () => {
     createCourse,
     // deleteCourse,
     createLevel,
+    getCourse,
     getCourses,
     getUsers,
     getLevels

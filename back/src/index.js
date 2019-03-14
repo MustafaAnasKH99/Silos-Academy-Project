@@ -17,6 +17,12 @@ const start = async () => {
         res.json({success: true, result: courses_list})
     })
 
+    app.get('/courses/get/:id', async (req, res) => {
+        const {id} = req.params
+        const course = await controller.getCourse(id)
+        res.json({success: true, result: course})
+    })
+
     app.get('/courses/new', async (req, res, next) => {
         const { course_name } = req.query
         if(!course_name){
@@ -32,10 +38,10 @@ const start = async () => {
     })
 
     app.get('/levels/new', async (req, res, next) => {
-        // const { level } = req.query
-        const result = await controller.createLevel({course_name: req.query.course_name, level_name: req.query.level_name, article: req.query.article, test: req.query.test, expected_answer: req.query.expected_answer, level_index: req.query.level_index})
+        const { course_name, level_name, article, test, expected_answer, level_index } = req.query
+        const result = await controller.createLevel({course_name: course_name, level_name: level_name, article: article, test: test, expected_answer: expected_answer, level_index: level_index})
         res.json({success: true, result})
-    })
+    }) 
 
     app.post('/levels/new', async (req, res, next) => {
         const {course_name, level_name, article, test, expected_answer, level_index} = req.body
