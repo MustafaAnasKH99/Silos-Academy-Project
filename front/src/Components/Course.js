@@ -1,32 +1,24 @@
 import React from 'react'
 import { Text, StyleSheet, View } from 'react-native'
-import { Button, ListItem } from 'react-native-elements';
+import { Button, ListItem, TextLink, Link } from 'react-native-elements';
 import styles from './Shared.style';
-import { withRouter } from '../Utils/Routing';
-import withHeader from '../HOCs/withHeader';
-import { compose } from 'redux';
+import { Formik } from 'formik';
+import { withRouter, Router, Switch, Route } from '../Utils/Routing';
 
 
-export default class Course extends React.Component{
-    state = {
-        courses_list:[],
+class Course extends React.Component{
+    handleSubmit = (id) => {
+        this.props.history.push({
+          pathname: `/courses/get/${id}`
+        });
     }
-
-    // getCourse = async () => {
-    //     fetch(`http://localhost:8080/courses/get/`)
-    //     .then()
-    //     .then( response => response.json())
-    //     .then( text =>{
-    //         this.setState({courses_list: text.result})
-    //    })
-    // }
 
     render(){
         const { courses_list } = this.props
-        console.log(courses_list)
-        console.log(this.props)
         return (
+            <Formik>
             <View>
+            {/* <Formik> */}
                 {
                     courses_list.map(course => (
                         <View>
@@ -34,14 +26,25 @@ export default class Course extends React.Component{
                                 key={course.id}
                                 title={course.course_name}
                                 subtitle={`this is ${course.course_name} sub-name`}
-                            />
-                            <Button 
+                            /> 
+                            <Button
                                 title={`Start ${course.course_name}`}
-                            />   
+                                icon={{
+                                    color: 'white',
+                                    name: 'paper-plane',
+                                    size: 15,
+                                    type: 'font-awesome'
+                                }}
+                                onPress={() => this.handleSubmit(course.id)}
+                            />
                         </View>   
                     ))
                 }
+                {/* </Formik> */}
             </View>
+            </Formik>
         )
     }
 }
+
+export default withRouter(Course)

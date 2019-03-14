@@ -6,6 +6,9 @@ import { withRouter } from '../Utils/Routing';
 import withHeader from '../HOCs/withHeader';
 import { compose } from 'redux'
 import Course from './Course'
+import Home from './Home'
+import { Router, Switch, Route, Link } from "../Utils/Routing";
+
 
 
 class Courses extends React.Component{
@@ -27,7 +30,7 @@ class Courses extends React.Component{
         console.log(courses_list)
         return(
             <View style={styles.container}>
-                <View>
+                <View> 
                     <Text>تصفح الدورات المتاحة على منصتنا هنا!</Text>
                     <Course 
                         courses_list={courses_list}
@@ -39,5 +42,6 @@ class Courses extends React.Component{
 }
 
 export default compose(
-    withHeader({ title: 'الدورات المتاحة' })
+    withHeader({ title: 'الدورات المتاحة' }),
+    // withRouter
   )(Courses);

@@ -1,21 +1,23 @@
 import React, { PureComponent } from 'react';
-import { View, Alert } from 'react-native';
+import { View, Alert, TouchableOpacity, StyleSheet } from 'react-native';
 import { Input, Button } from 'react-native-elements';
 import { Formik } from 'formik';
 
 import styles from './Shared.style';
-import { withRouter } from '../Utils/Routing';
+import { withRouter, Link, Router, Switch, Route } from '../Utils/Routing';
 
-const showAlert = () =>{
-  Alert.alert(
-    'Take me to courses'
-  )
-}
+import Courses from './Courses'
+
+// const showAlert = () =>{
+//   Alert.alert(
+//     'Take me to courses'
+//   )
+// }
 
 class Home extends PureComponent {
   onPressButton = ({ owner, repo }) => {
     this.props.history.push({
-      pathname: '/commit',
+      pathname: '/courses',
       state: { owner, repo }
     });
   }
@@ -34,7 +36,8 @@ class Home extends PureComponent {
                 size: 15,
                 type: 'font-awesome'
               }}
-              onPress={() => showAlert()}
+              // onPress={() => showAlert()}
+              onPress = {this.onPressButton}
           />
             {/* <Input
               containerStyle={input.containerStyle}
@@ -69,5 +72,25 @@ class Home extends PureComponent {
     );
   }
 }
+
+const styling = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    paddingHorizontal: 10
+  },
+  button: {
+    alignItems: 'center',
+    backgroundColor: '#DDDDDD',
+    padding: 10
+  },
+  countContainer: {
+    alignItems: 'center',
+    padding: 10
+  },
+  textLink: {
+    color: '#FF00FF'
+  }
+})
 
 export default withRouter(Home);
