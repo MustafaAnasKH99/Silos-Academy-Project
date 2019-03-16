@@ -22,7 +22,7 @@ class Home extends PureComponent {
     });
   }
 
-  render() {   
+  render() {
     const { input, button } = styles;
     return (
       <Formik initialValues={{ owner: '', repo: '' }} onSubmit={this.onPressButton}>
@@ -79,7 +79,7 @@ const styling = StyleSheet.create({
     paddingTop: 200,
     alignItems: 'center',
     justifyContent: 'center',
-    paddingHorizontal: '10px'
+    paddingHorizontal: 10
   },
   button: {
     alignItems: 'center',
