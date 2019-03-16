@@ -14,13 +14,23 @@ const start = async () => {
 
     app.get('/courses', async (req, res) => {
         const courses_list = await controller.getCourses()
-        res.json({success: true, result: courses_list})
+        const levels_list = await controller.getLevels()
+        res.json({success: true, courses_list, levels_list})
     })
 
-    app.get('/courses/get/:id', async (req, res) => {
-        const {id} = req.params
-        const course = await controller.getCourse(id)
-        res.json({success: true, result: course})
+    // app.get('/courses/get/:name', async (req, res) => {
+    //     const { course_name } = req.params
+    //     const course = await controller.getCourse(course_name)
+    //     const levels = await controller.getLevels(course_name)
+    //     res.json({success: true, course, levels})
+    // }) 
+
+    app.get('/courses/get/:name', async (req, res) => {
+        const { course_name } = req.body
+        console.log(course_name)
+        const courses_list = await controller.getCourses(course_name)
+        const levels = await controller.getLevels(course_name)
+        res.json({success: true, result: levels})
     })
 
     app.get('/courses/new', async (req, res, next) => {

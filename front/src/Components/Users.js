@@ -45,6 +45,7 @@ export default class Users extends React.PureComponent{
 
     render(){
         const { users_list } = this.state
+        console.log(this.props)
         return(
             <View style={styles.container}>
             { users_list.map( user => (

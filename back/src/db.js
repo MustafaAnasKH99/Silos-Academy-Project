@@ -49,16 +49,16 @@ const initializeDatabase = async () => {
     return rows
   }
 
-  const getCourse = async (id) => {
+  const getCourse = async (course_name) => {
     try {
-      const courses_list = await db.all(`SELECT * from courses WHERE id=${id}`)
+      const courses_list = await db.all(`SELECT * from courses WHERE course_name=${course_name}`)
       const course = courses_list[0]
       if(!course){
-        throw new Error(`course ${id} not found`)
+        throw new Error(`course ${course_name} not found`)
       }
       return course
     } catch(e){
-      throw new Error(`couldn't get the course ${id}: `+e.message)
+      throw new Error(`couldn't get the course ${course_name}: `+e.message)
     } 
   }
 
@@ -68,8 +68,15 @@ const initializeDatabase = async () => {
   }
 
   const getLevels = async () => {
-    const levels = await db.all("SELECT * FROM level")
-    return levels
+    try{
+      const levels = await db.all(`SELECT * FROM level`)
+      if(!levels){
+        throw new Error(`not found`)
+      }
+      return levels
+    } catch(e){
+        throw new Error(`couldn't get the level!!: `+e.message)
+    } 
   }
 
   const controller = {

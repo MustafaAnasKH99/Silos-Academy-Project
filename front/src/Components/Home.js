@@ -1,5 +1,5 @@
 import React, { PureComponent } from 'react';
-import { View, Alert, TouchableOpacity, StyleSheet } from 'react-native';
+import { View, Alert, StyleSheet } from 'react-native';
 import { Input, Button } from 'react-native-elements';
 import { Formik } from 'formik';
 
@@ -27,7 +27,7 @@ class Home extends PureComponent {
     return (
       <Formik initialValues={{ owner: '', repo: '' }} onSubmit={this.onPressButton}>
         {({ handleChange, handleSubmit, values }) => (
-          <View style={styles.container}>
+          <View style={styling.container}>
           <Button
               title='Courses'
               icon={{
@@ -76,8 +76,10 @@ class Home extends PureComponent {
 const styling = StyleSheet.create({
   container: {
     flex: 1,
+    paddingTop: 200,
+    alignItems: 'center',
     justifyContent: 'center',
-    paddingHorizontal: 10
+    paddingHorizontal: '10px'
   },
   button: {
     alignItems: 'center',
@@ -86,7 +88,7 @@ const styling = StyleSheet.create({
   },
   countContainer: {
     alignItems: 'center',
-    padding: 10
+    padding: 50
   },
   textLink: {
     color: '#FF00FF'
