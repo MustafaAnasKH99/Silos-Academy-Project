@@ -1,5 +1,6 @@
 import app from './app'
 import initializeDatabase from './db'
+import {APP_PORT} from "./constants";
 
 
 const start = async () => {
@@ -65,7 +66,7 @@ const start = async () => {
         res.status(500).json({ success:false, message })
       })
     
-    app.listen(8080, () => console.log('server listening on port 8080'))
+    app.listen(APP_PORT, () => console.log(`server listening on port ${APP_PORT}`))
   }
   
 start();

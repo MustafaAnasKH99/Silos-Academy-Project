@@ -5,10 +5,11 @@ import { Formik } from 'formik';
 
 import styles from './Shared.style';
 import { withRouter } from '../Utils/Routing';
+import {APP_URL} from "../constants";
 
 export default class UserProfile extends React.PureComponent{
       componentDidMount(){
-        // fetch('//localhost:8080/users')
+        // fetch(`${APP_URL}users`)
         // .then( response => response.json())
         // .then( text =>{
         //     this.setState({users_list: text.result})
@@ -29,5 +30,5 @@ export default class UserProfile extends React.PureComponent{
 
 // export default compose(
 //     withHeader({ title: 'Users' }),
-//     fetch('//localhost:8080/users')
+//     fetch(`${APP_URL}users`)
 //   )(Users);
