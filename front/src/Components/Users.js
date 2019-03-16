@@ -5,16 +5,17 @@ import styles from './Shared.style';
 // import fetch from 'fetch-hoc';
 import { withRouter } from '../Utils/Routing';
 import withHeader from '../HOCs/withHeader';
+import {APP_URL} from "../constants";
 
 export default class Users extends React.PureComponent{
-    state = { 
+    state = {
         users_list:[],
         error_message: ''
     }
 
     // getUsers(){
     //     try{
-    //       fetch('//localhost:8080/users')
+    //       fetch(`${APP_URL}users`)
     //         .then(response => response.json())
     //         .then(answer => console.log(answer))
     //     //   .then(
@@ -23,7 +24,7 @@ export default class Users extends React.PureComponent{
     //     //     if (answer.success){
     //     //       const users_list = answer.result
     //     //       this.setState({users_list});
-    //     //     } else { 
+    //     //     } else {
     //     //       const error_message = answer.message
     //     //       this.setState({error_message})
     //     //     }
@@ -34,9 +35,9 @@ export default class Users extends React.PureComponent{
     // }
 
       componentDidMount(){
-        //  this.getUsers()
-        // fetch('//localhost:8080/users')
-        fetch('//localhost:8080/users')
+         // this.getUsers()
+        // fetch(`${APP_URL}users`)
+        fetch(`${APP_URL}users`)
         .then( response => response.json())
         .then( text =>{
             this.setState({users_list: text.result})
@@ -53,7 +54,7 @@ export default class Users extends React.PureComponent{
                     <Text>{user.email} - {user.username} - {user.first_name} - {user.last_name}</Text>
                 </View>
             ))}
-                <Button 
+                <Button
                     title="SUBMIT"
                     type="outline"
                     // backgroundColor='#2ecc40'
@@ -63,7 +64,7 @@ export default class Users extends React.PureComponent{
                         size: 15,
                         type: 'font-awesome',
                     }}
-                    raised = 'true'   
+                    raised = 'true'
                 />
             </View>
         )
@@ -72,5 +73,5 @@ export default class Users extends React.PureComponent{
 
 // export default compose(
 //     withHeader({ title: 'Users' }),
-//     fetch('//localhost:8080/users')
+//     fetch(`${APP_URL}users`)
 //   )(Users);

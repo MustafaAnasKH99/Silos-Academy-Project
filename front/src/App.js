@@ -10,6 +10,7 @@ import CommitList from './Components/Commit/CommitList';
 import { Route, Router, Switch } from './Utils/Routing';
 import { View, Text, ActivityIndicator, StyleSheet, FlatList } from 'react-native';
 import { Button, ListItem } from 'react-native-elements';
+import {APP_URL_HTTP} from "./constants";
 
 
 export default class App extends Component {
@@ -81,7 +82,7 @@ export default class App extends Component {
 
 componentDidMount(){
   console.log('porpssss',this.props)
-  fetch('http://localhost:8080/courses')
+  fetch(`${APP_URL_HTTP}courses`)
     .then( response => response.json())
     .then( text =>{
     this.setState({courses_list: text.courses_list, levels_list: text.levels_list, loading: 'loaded'})

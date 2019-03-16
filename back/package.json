@@ -6,6 +6,15 @@
   "babel": {
     "presets": [
       "@babel/preset-env"
+    ],
+    "plugins": [
+      "@babel/plugin-transform-regenerator",
+      [
+        "@babel/plugin-transform-runtime",
+        {
+          "regenerator": true
+        }
+      ]
     ]
   },
   "scripts": {
@@ -35,5 +44,10 @@
     "serve-favicon": "^2.5.0",
     "sql-template-strings": "^2.2.2",
     "sqlite": "^3.0.1"
+  },
+  "devDependencies": {
+    "@babel/plugin-transform-runtime": "^7.3.4",
+    "@babel/runtime": "^7.3.4",
+    "babel-plugin-transform-es2015-modules-commonjs": "^6.26.2"
   }
 }
