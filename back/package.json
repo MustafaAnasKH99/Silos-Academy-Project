@@ -43,11 +43,13 @@
     "rimraf": "^2.6.3",
     "serve-favicon": "^2.5.0",
     "sql-template-strings": "^2.2.2",
-    "sqlite": "^3.0.1"
+    "sqlite": "^3.0.1",
   },
   "devDependencies": {
     "@babel/plugin-transform-runtime": "^7.3.4",
     "@babel/runtime": "^7.3.4",
-    "babel-plugin-transform-es2015-modules-commonjs": "^6.26.2"
+    "babel-core": "^7.0.0-bridge.0",
+    "babel-plugin-transform-es2015-modules-commonjs": "^6.26.2",
+    "regenerator-runtime": "^0.13.1"
   }
 }
