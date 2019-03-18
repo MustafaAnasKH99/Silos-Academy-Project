@@ -1,11 +1,12 @@
 import React from 'react'
 import { Text, StyleSheet, View, ScrollView } from 'react-native'
-import { Button, ListItem, TextLink, Link } from 'react-native-elements';
+import { Button, ListItem, Avatar, TextLink, Link } from 'react-native-elements';
 import styles from './Shared.style';
 import { Formik } from 'formik';
 import { compose } from 'redux'
 import withHeader from '../HOCs/withHeader';
 import { withRouter, Router, Switch, Route } from '../Utils/Routing';
+import JSImage from '../images/JS.jpg';
 import fetch from 'fetch-hoc'
 import {APP_URL, APP_URL_HTTP, APP_URL_HTTPS} from "../constants";
 
@@ -30,8 +31,15 @@ export default class Course extends React.Component{
                             key={course.id}
                             title={course.course_name}
                             subtitle={`this is ${course.course_name} sub-name`}
-                            avatar={{uri: 'https://s3.amazonaws.com/uifaces/faces/twitter/ladylexy/128.jpg'}}
+                            leftAvatar={{ source: { uri: JSImage } }}
                         /> 
+                            {/* <Avatar
+                                rounded
+                                source={{
+                                    uri:
+                                    'https://s3.amazonaws.com/uifaces/faces/twitter/ladylexy/128.jpg',
+                                }}
+                            /> */}
                     </View>  
                 </ScrollView> 
             </View>
@@ -43,10 +51,12 @@ const styling = StyleSheet.create({
     container: {
         flex: 1,
         justifyContent: 'center',
-        paddingHorizontal: 20,
+        paddingHorizontal: 0,
         borderWidth: 5,
         borderColor: '#d6d7da',
-        margin: 10
+        // marginTop: 10,
+        marginRight: 5,
+        marginLeft: 5,
     },
 })
 

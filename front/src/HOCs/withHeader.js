@@ -44,13 +44,14 @@ const withHeader = ({ title = '' }) => (WrappedComponent) => {
     });
 
     render() {
+      const _title = (this.props.level && this.props.level.level_name) || title
       return (
         <View style={styles.container}>
           <Header
             containerStyle={containerStyle}
             centerContainerStyle={centerContainerStyle}
             leftComponent={this.horizontalComponent('chevron-left', 20, this.goBack)}
-            centerComponent={this.centerComponent(title)}
+            centerComponent={this.centerComponent(_title)}
             rightComponent={this.horizontalComponent('home', 25, this.goHome)}
           />
           <WrappedComponent {...this.props}/>

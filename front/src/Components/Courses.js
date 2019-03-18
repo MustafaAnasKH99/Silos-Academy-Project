@@ -20,7 +20,7 @@ class Courses extends React.Component {
         this.props.history.push({
           pathname: `/courses/${course_name}`
         });
-    }
+    }   
 
     componentDidMount() {
         fetch(`${APP_URL}courses`)
@@ -44,13 +44,14 @@ class Courses extends React.Component {
             console.log('is there a problem ' ,this.state.courses_list)
             return (
                 <View>
-                    <Text>تصفح الدورات المتاحة على منصتنا هنا!</Text>
+                    <Text style={styling.text}>تصفح الدورات المتاحة هنا!</Text>
                     {courses_list.map(course => (
                             <View>
                                 <Course
                                     course={course}
                                 />
                                  <Button
+                                    style={styling.button}
                                     title={`Start`}
                                     icon={{
                                         color: 'white',
@@ -78,6 +79,18 @@ const styling = StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'space-around',
         padding: 10
+    },
+    text: {
+        fontSize: 20,
+        textAlign: 'center',
+        color: '#2089dc',
+        padding: 10,
+    },
+    button: {
+        margin: 5,
+        marginTop: 0,
+        borderBottomRightRadius: 0,
+        borderBottomLeftRadius: 0,
     }
 })
 

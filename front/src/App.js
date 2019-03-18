@@ -7,6 +7,7 @@ import withHeader from './HOCs/withHeader';
 import { compose } from 'redux'
 import UserProfile from './Components/UserProfile';
 import Levels from './Components/Levels';
+import Level from './Components/Level';
 import CommitList from './Components/Commit/CommitList';
 import { Route, Router, Switch } from './Utils/Routing';
 import { View, Text, ActivityIndicator, StyleSheet, FlatList } from 'react-native';
@@ -50,9 +51,14 @@ componentDidMount(){
               <Route exact key={course.id} path={`/courses/${course.course_name}`} component={(props) => <Levels {...props} course={course} />} />
             ))
           }
+          {
+            this.state.levels_list.map(level => (
+              <Route exact path={`/courses/${level.level_name}`} component={(props) => <Level {...props} level={level} />} />
+            ))
+          }
         </Switch>
       </Router>
-    );
+    )
   }
 }
 

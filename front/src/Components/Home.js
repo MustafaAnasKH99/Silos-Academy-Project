@@ -33,6 +33,7 @@ class Home extends PureComponent {
           {/* <View style={styling.container}> */}
           <ImageBackground source={BackGImage} style={{height: '600px', width: '300px'}}>
             <Button
+            style={styling.button}
                 title='Courses'
                 icon={{
                   color: 'white',
@@ -87,8 +88,8 @@ const styling = StyleSheet.create({
   },
   button: {
     alignItems: 'center',
-    backgroundColor: '#DDDDDD',
-    padding: 10
+    padding: 10,
+    borderBottomRightRadius: 0
   },
   countContainer: {
     alignItems: 'center',
@@ -96,7 +97,7 @@ const styling = StyleSheet.create({
   },
   textLink: {
     color: '#FF00FF'
-  }
+  },
 })
 
 export default withRouter(Home);

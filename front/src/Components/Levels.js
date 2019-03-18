@@ -12,6 +12,13 @@ class Levels extends PureComponent{
         levels_list: [],
         status: 'loading'
     }
+
+    handleSubmit = (level) => {
+        this.props.history.push({
+          pathname: `/courses/${level.level_name}`
+        });
+        console.log(this.props.history)
+    }
     
     componentDidMount(){
         fetch(`${APP_URL}courses`)
@@ -21,7 +28,6 @@ class Levels extends PureComponent{
             this.setState({levels_list: text.levels_list, status: 'loaded'})
         })
     }
-    // console.log('course:::',course)
     render(){
         console.log('not passed?', this.props)
     const { loading, levels_list } = this.state
@@ -63,7 +69,7 @@ class Levels extends PureComponent{
                       size: 15,
                       type: 'font-awesome'
                   }}
-                  onPress={() => console.log('clicked')}
+                  onPress={() => this.handleSubmit(level)}
                 />
               </View>
             ))
