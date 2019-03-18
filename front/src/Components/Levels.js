@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react';
 import { Route, Router, Switch } from '../Utils/Routing';
-import { View, Text, ActivityIndicator, StyleSheet, FlatList } from 'react-native';
+import { View, Text, ActivityIndicator, StyleSheet, FlatList, Image } from 'react-native';
 import { Button, ListItem } from 'react-native-elements';
 import withHeader from '../HOCs/withHeader';
 import { withRouter } from '../Utils/Routing';
@@ -32,6 +32,7 @@ class Levels extends PureComponent{
         console.log('not passed?', this.props)
     const { loading, levels_list } = this.state
     const { course } = this.props
+    console.log('imagggeeee',course.img_url)
       let thisCourseLevels = levels_list.filter(e => e.course_name === course.course_name)
       if (loading === 'loading'){
         return (
@@ -45,7 +46,7 @@ class Levels extends PureComponent{
           <ListItem
               key={course.id}
               title={course.course_name}
-              subtitle={`this is ${course.course_name} sub-name`}
+              subtitle={`${course.course_name} is ${course.notes}`}
           />
           {
             thisCourseLevels.map(level => (
@@ -55,9 +56,6 @@ class Levels extends PureComponent{
                   renderItem={({item}) => (
                     <View>
                       <Text>{item.level_name}</Text>
-                      <Text>{item.article}</Text>
-                      <Text>{item.test}</Text>
-                      <Text>{item.expected_answer}</Text>
                     </View>
                   )}
                 />
@@ -74,6 +72,11 @@ class Levels extends PureComponent{
               </View>
             ))
           }
+          <Image
+            source={{ uri: course.img_url }}
+            style={{ width: '100%', height: 200 }}
+            PlaceholderContent={<ActivityIndicator />}
+          />
       </View>
       )
     }

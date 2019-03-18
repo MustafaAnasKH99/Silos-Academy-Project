@@ -44,7 +44,7 @@ const withHeader = ({ title = '' }) => (WrappedComponent) => {
     });
 
     render() {
-      const _title = (this.props.level && this.props.level.level_name) || title
+      const _title = (this.props.level && this.props.level.level_name) || (this.props.course && this.props.course.course_name) || title
       return (
         <View style={styles.container}>
           <Header

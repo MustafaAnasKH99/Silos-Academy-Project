@@ -30,16 +30,9 @@ export default class Course extends React.Component{
                         <ListItem
                             key={course.id}
                             title={course.course_name}
-                            subtitle={`this is ${course.course_name} sub-name`}
-                            leftAvatar={{ source: { uri: JSImage } }}
+                            subtitle={`${course.course_name} is ${course.notes}`}
+                            leftAvatar={{ source: { uri: course.img_url } }}
                         /> 
-                            {/* <Avatar
-                                rounded
-                                source={{
-                                    uri:
-                                    'https://s3.amazonaws.com/uifaces/faces/twitter/ladylexy/128.jpg',
-                                }}
-                            /> */}
                     </View>  
                 </ScrollView> 
             </View>
@@ -54,7 +47,6 @@ const styling = StyleSheet.create({
         paddingHorizontal: 0,
         borderWidth: 5,
         borderColor: '#d6d7da',
-        // marginTop: 10,
         marginRight: 5,
         marginLeft: 5,
     },
