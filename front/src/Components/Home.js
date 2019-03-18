@@ -1,7 +1,8 @@
 import React, { PureComponent } from 'react';
-import { View, Alert, StyleSheet } from 'react-native';
+import { View, Alert, StyleSheet, ImageBackground } from 'react-native';
 import { Input, Button } from 'react-native-elements';
 import { Formik } from 'formik';
+import BackGImage from '../images/Silos.png'
 
 import styles from './Shared.style';
 import { withRouter, Link, Router, Switch, Route } from '../Utils/Routing';
@@ -26,19 +27,20 @@ class Home extends PureComponent {
     const { input, button } = styles;
     return (
       <Formik initialValues={{ owner: '', repo: '' }} onSubmit={this.onPressButton}>
-        {({ handleChange, handleSubmit, values }) => (
-          <View style={styling.container}>
-          <Button
-              title='Courses'
-              icon={{
-                color: 'white',
-                name: 'paper-plane',
-                size: 15,
-                type: 'font-awesome'
-              }}
-              // onPress={() => showAlert()}
-              onPress = {this.onPressButton}
-          />
+        {/* {({ handleChange, handleSubmit, values }) => ( */}
+          {/* <View style={styling.container}> */}
+          <ImageBackground source={BackGImage} style={{height: '600px', width: '300px'}}>
+            <Button
+                title='Courses'
+                icon={{
+                  color: 'white',
+                  name: 'paper-plane',
+                  size: 15,
+                  type: 'font-awesome'
+                }}
+                // onPress={() => showAlert()}
+                onPress = {this.onPressButton}
+            />
             {/* <Input
               containerStyle={input.containerStyle}
               inputStyle={input.inputStyle}
@@ -66,8 +68,8 @@ class Home extends PureComponent {
               buttonStyle={button.containerStyle}
               onPress={handleSubmit}
             /> */}
-          </View>
-        )}
+            </ImageBackground>
+          {/* </View> */}
       </Formik>
     );
   }
@@ -79,7 +81,7 @@ const styling = StyleSheet.create({
     paddingTop: 200,
     alignItems: 'center',
     justifyContent: 'center',
-    paddingHorizontal: '10px'
+    paddingHorizontal: 10
   },
   button: {
     alignItems: 'center',
