@@ -17,6 +17,7 @@ export default class UserProfile extends React.PureComponent{
       }
 
     render(){
+        console.log(this.props)
         return(
             <View style={styles.container}>
                 <Button 

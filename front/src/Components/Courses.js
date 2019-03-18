@@ -8,13 +8,18 @@ import {compose} from 'redux'
 import Course from './Course'
 import Home from './Home'
 import {Router, Switch, Route, Link} from "../Utils/Routing";
-import {APP_URL} from "../constants";
-
+import {APP_URL, APP_URL_HTTP, APP_URL_HTTPS} from "../constants";
 
 class Courses extends React.Component {
     state = {
         courses_list: [],
         status: 'loading'
+    }
+
+    handleSubmit = (course_name) => {
+        this.props.history.push({
+          pathname: `/courses/${course_name}`
+        });
     }
 
     componentDidMount() {
@@ -36,6 +41,7 @@ class Courses extends React.Component {
                 </View>
             )
         } else {
+            console.log('is there a problem ' ,this.state.courses_list)
             return (
                 <View>
                     <Text>تصفح الدورات المتاحة على منصتنا هنا!</Text>
@@ -43,6 +49,16 @@ class Courses extends React.Component {
                             <View>
                                 <Course
                                     course={course}
+                                />
+                                 <Button
+                                    title={`Start`}
+                                    icon={{
+                                        color: 'white',
+                                        name: 'paper-plane',
+                                        size: 15,
+                                        type: 'font-awesome'
+                                    }}
+                                    onPress={() => this.handleSubmit(course.course_name)}
                                 />
                             </View>
                         )

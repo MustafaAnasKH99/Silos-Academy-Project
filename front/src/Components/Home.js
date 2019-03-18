@@ -3,6 +3,8 @@ import { View, Alert, StyleSheet, ImageBackground } from 'react-native';
 import { Input, Button } from 'react-native-elements';
 import { Formik } from 'formik';
 import BackGImage from '../images/Silos.png'
+import { compose } from 'redux'
+import withHeader from '../HOCs/withHeader';
 
 import styles from './Shared.style';
 import { withRouter, Link, Router, Switch, Route } from '../Utils/Routing';
@@ -98,3 +100,7 @@ const styling = StyleSheet.create({
 })
 
 export default withRouter(Home);
+// export default compose(
+//   withHeader({ title: 'الدورات المتاحة' }),
+//   withRouter
+// )(Home)

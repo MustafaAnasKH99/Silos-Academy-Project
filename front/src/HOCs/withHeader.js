@@ -53,7 +53,7 @@ const withHeader = ({ title = '' }) => (WrappedComponent) => {
             centerComponent={this.centerComponent(title)}
             rightComponent={this.horizontalComponent('home', 25, this.goHome)}
           />
-          <WrappedComponent />
+          <WrappedComponent {...this.props}/>
         </View>
       );
     }

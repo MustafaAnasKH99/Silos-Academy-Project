@@ -3,10 +3,15 @@ import { Text, StyleSheet, View, ScrollView } from 'react-native'
 import { Button, ListItem, TextLink, Link } from 'react-native-elements';
 import styles from './Shared.style';
 import { Formik } from 'formik';
+import { compose } from 'redux'
+import withHeader from '../HOCs/withHeader';
 import { withRouter, Router, Switch, Route } from '../Utils/Routing';
+import fetch from 'fetch-hoc'
+import {APP_URL, APP_URL_HTTP, APP_URL_HTTPS} from "../constants";
 
 
-class Course extends React.Component{
+
+export default class Course extends React.Component{
     handleSubmit = (course_name) => {
         this.props.history.push({
           pathname: `/courses/get/${course_name}`
@@ -14,7 +19,9 @@ class Course extends React.Component{
     }
 
     render(){
+        console.log('Hereee they areee', this.props)
         const { course } = this.props
+        console.log(course)
         return (
             <View>
                 <ScrollView> 
@@ -25,16 +32,6 @@ class Course extends React.Component{
                             subtitle={`this is ${course.course_name} sub-name`}
                             avatar={{uri: 'https://s3.amazonaws.com/uifaces/faces/twitter/ladylexy/128.jpg'}}
                         /> 
-                        <Button
-                            title={`Start`}
-                            icon={{
-                                color: 'white',
-                                name: 'paper-plane',
-                                size: 15,
-                                type: 'font-awesome'
-                            }}
-                            onPress={() => this.handleSubmit(course.course_name)}
-                        />
                     </View>  
                 </ScrollView> 
             </View>
@@ -53,4 +50,10 @@ const styling = StyleSheet.create({
     },
 })
 
-export default withRouter(Course)
+// export default compose(
+//   withHeader({ title: 'الدورات المتاحة' }),
+//   fetch(`${APP_URL}courses`),
+//   withRouter,
+// )(Course)
+
+// export default withHeader({ title: 'Commits' })(Course);
