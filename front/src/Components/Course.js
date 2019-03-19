@@ -1,6 +1,7 @@
 import React from 'react'
 import { Text, StyleSheet, View, ScrollView } from 'react-native'
 import { Button, ListItem, Avatar, TextLink, Link } from 'react-native-elements';
+import Icon from 'react-native-vector-icons/FontAwesome';
 import styles from './Shared.style';
 import { Formik } from 'formik';
 import { compose } from 'redux'
@@ -9,6 +10,7 @@ import { withRouter, Router, Switch, Route } from '../Utils/Routing';
 import JSImage from '../images/JS.jpg';
 import fetch from 'fetch-hoc'
 import {APP_URL, APP_URL_HTTP, APP_URL_HTTPS} from "../constants";
+import {ImageBackground} from 'react-native-web'
 
 
 
@@ -24,17 +26,14 @@ export default class Course extends React.Component{
         const { course } = this.props
         console.log(course)
         return (
-            <View>
-                <ScrollView> 
-                    <View style={styling.container}>
-                        <ListItem
-                            key={course.id}
-                            title={course.course_name}
-                            subtitle={`${course.notes}`}
-                            leftAvatar={{ source: { uri: course.img_url } }}
-                        /> 
-                    </View>  
-                </ScrollView> 
+            <View style={styling.container}>
+                <ListItem
+                    key={course.id}
+                    title={course.course_name}
+                    subtitle={`${course.notes}`}
+                    leftAvatar={{ source: { uri: course.img_url } }}
+                /> 
+                <Icon style={styling.icon} name='angle-double-right' type='font-awesome' size={25} color='black' />
             </View>
         )
     }
@@ -43,13 +42,17 @@ export default class Course extends React.Component{
 const styling = StyleSheet.create({
     container: {
         flex: 1,
-        justifyContent: 'center',
+        flexDirection: 'row',
+        // justifyContent: 'stretch',
         paddingHorizontal: 0,
-        borderWidth: 5,
+        // borderWidth: 5,
         borderColor: '#d6d7da',
         marginRight: 5,
         marginLeft: 5,
     },
+    icon: {
+        padding:25,
+    }
 })
 
 // export default compose(

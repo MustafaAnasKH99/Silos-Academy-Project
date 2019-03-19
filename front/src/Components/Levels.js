@@ -50,8 +50,9 @@ class Levels extends PureComponent{
           />
           {
             thisCourseLevels.map(level => (
-              <View style={{flex: 1, flexDirection: 'row', padding: 2}}>
+              <View style={{flex: 1, flexDirection: 'row', paddingRight: 15, paddingLeft: 15, paddingBottom: 5}}>
                 <FlatList 
+                  style={styling.list}
                   data={[{level_name: `${level.level_name}`},{article: `${level.article}`}, {test: `${level.test}`}, {expected_answer: `${level.expected_answer}`}]}
                   renderItem={({item}) => (
                     <View>
@@ -86,13 +87,13 @@ class Levels extends PureComponent{
 const styling = StyleSheet.create({
     container: {
       flex: 1,
-      justifyContent: 'center'
+      justifyContent: 'center',
     },
     horizontal: {
       flexDirection: 'row',
       justifyContent: 'space-around',
       padding: 10
-    }
+    },
 })
 
 export default compose(

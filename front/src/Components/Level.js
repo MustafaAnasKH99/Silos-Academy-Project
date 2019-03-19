@@ -105,7 +105,6 @@ const styling = StyleSheet.create({
         flexDirection: 'row',
         alignItems: 'center',
         justifyContent: 'center',
-        // boxShadow: 10
     }
 })
 

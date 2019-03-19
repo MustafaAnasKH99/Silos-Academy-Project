@@ -1,9 +1,10 @@
 import React from 'react'
-import {Text, StyleSheet, View, ActivityIndicator} from 'react-native'
+import {Text, StyleSheet, Platform, View, ActivityIndicator, ScrollView, TouchableHighlight, TouchableOpacity, TouchableNativeFeedback, TouchableWithoutFeedback} from 'react-native'
 import {Button, ListItem} from 'react-native-elements';
 import styles from './Shared.style';
 import {withRouter} from '../Utils/Routing';
 import withHeader from '../HOCs/withHeader';
+import Icon from 'react-native-vector-icons/FontAwesome';
 import {compose} from 'redux'
 import Course from './Course'
 import Home from './Home'
@@ -44,25 +45,14 @@ class Courses extends React.Component {
             console.log('is there a problem ' ,this.state.courses_list)
             return (
                 <View style={styling.container}>
-                    {courses_list.map(course => (
-                            <View>
-                                <Course
-                                    course={course}
-                                />
-                                 <Button
-                                    style={styling.button}
-                                    title={`انطلق`}
-                                    icon={{
-                                        color: 'white',
-                                        name: 'paper-plane',
-                                        size: 15,
-                                        type: 'font-awesome'
-                                    }}
-                                    onPress={() => this.handleSubmit(course.course_name)}
-                                />
-                            </View>
-                        )
-                    )}
+                {courses_list.map(course => (
+                        <TouchableOpacity onPress={() => this.handleSubmit(course.course_name)}>
+                            <Course
+                                course={course}
+                            />
+                        </TouchableOpacity> 
+                    )
+                )}
                 </View>
             )
         }
@@ -71,8 +61,9 @@ class Courses extends React.Component {
 
 const styling = StyleSheet.create({
     container: {
-        flex: 1,
-        justifyContent: 'center',
+        flex: 2,
+        flexDirection: 'column',
+        justifyContent: 'space-between',
         padding: 5
     },
     horizontal: {
