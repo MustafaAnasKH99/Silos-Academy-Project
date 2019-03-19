@@ -25,17 +25,6 @@ class Level extends React.Component{
     }
 
     render(){
-        const shadowOpt = {
-            width:160,
-            height:170,
-            color:"#000",
-            border:2,
-            radius:3,
-            opacity:0.2,
-            x:0,
-            y:3,
-            style:{marginVertical:5}
-        }
         console.log(this.state.answer)
         const { level } = this.props
         console.log('Look for level details:', this.props)
@@ -52,31 +41,30 @@ class Level extends React.Component{
             return (
                 <View style={styling.mainBox}>
                     <View style={styling.alertContainer}>
-                            <Text>This level has a test below.  </Text>
-                            <Text>Read carefully so you answer the question to pass this level     </Text>
                             <Icon
                                 name='warning'
                                 size={24}
                                 color='black'
                             />
+                            <Text>هناك اختبار أدنى هذا المستوى. تأكد ان ترفع مستوى تركيزك خلال القراءة لتتمكن من الاجاببة وتخطي المستوى  </Text>
+                            {/* <Text>Read carefully so you answer the question to pass this level     </Text> */}
                     </View>
                     <View style={styling.container}>
                         <Text>{level.level_name}</Text>
                         <Text>{level.article}</Text>
-                        <Text>{level.test}</Text>
                         <Input
-                            placeholder='INPUT'
+                            placeholder='إجابتك هنا'
                             leftIcon={
                                 <Icon
-                                name='code'
-                                size={24}
-                                color='black'
+                                    name='code'
+                                    size={24}
+                                    color='black'
                                 />
                             }
                             onChange={(e) => this.setState({answer: e.target.value})}
                         />
                         <Button 
-                            title='SUBMIT YOUR ANSWER'
+                            title='قدم اجابتك'
                             icon={{
                                 color: 'white',
                                 name:'paper-plane',
@@ -97,7 +85,7 @@ const styling = StyleSheet.create({
         // flex: 1,
         alignItems: 'center',
         justifyContent: 'center',
-        paddingHorizontal: 0,
+        padding: 20,
         borderWidth: 5,
         borderColor: '#d6d7da',
         margin: 5,
@@ -105,6 +93,7 @@ const styling = StyleSheet.create({
     text:{
         padding: 5,
     },
+
     alertContainer:{
         backgroundColor: 'rgba(255, 82, 82, 0.8)',
         color: '#fff',

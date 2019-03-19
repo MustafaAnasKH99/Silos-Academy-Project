@@ -51,7 +51,7 @@ class Courses extends React.Component {
                                 />
                                  <Button
                                     style={styling.button}
-                                    title={`Start`}
+                                    title={`انطلق`}
                                     icon={{
                                         color: 'white',
                                         name: 'paper-plane',

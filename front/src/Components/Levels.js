@@ -60,7 +60,7 @@ class Levels extends PureComponent{
                   )}
                 />
                 <Button
-                  title={`Start ${level.level_name}`}
+                  title={`ابدا ${level.level_name}`}
                   icon={{
                       color: 'white',
                       name: 'paper-plane',
