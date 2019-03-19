@@ -30,7 +30,7 @@ export default class Course extends React.Component{
                         <ListItem
                             key={course.id}
                             title={course.course_name}
-                            subtitle={`${course.course_name} is ${course.notes}`}
+                            subtitle={`${course.notes}`}
                             leftAvatar={{ source: { uri: course.img_url } }}
                         /> 
                     </View>  

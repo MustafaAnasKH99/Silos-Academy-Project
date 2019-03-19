@@ -50,7 +50,7 @@ class Levels extends PureComponent{
           />
           {
             thisCourseLevels.map(level => (
-              <View>
+              <View style={{flex: 1, flexDirection: 'row', padding: 2}}>
                 <FlatList 
                   data={[{level_name: `${level.level_name}`},{article: `${level.article}`}, {test: `${level.test}`}, {expected_answer: `${level.expected_answer}`}]}
                   renderItem={({item}) => (

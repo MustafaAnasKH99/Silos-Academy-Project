@@ -1,5 +1,5 @@
 import React, { PureComponent } from 'react';
-import { View, Alert, StyleSheet, ImageBackground } from 'react-native';
+import { View, Alert, StyleSheet, Linking } from 'react-native';
 import { Input, Button } from 'react-native-elements';
 import { Formik } from 'formik';
 import BackGImage from '../images/Silos.png'
@@ -11,12 +11,6 @@ import { withRouter, Link, Router, Switch, Route } from '../Utils/Routing';
 
 import Courses from './Courses'
 
-// const showAlert = () =>{
-//   Alert.alert(
-//     'Take me to courses'
-//   )
-// }
-
 class Home extends PureComponent {
   onPressButton = ({ owner, repo }) => {
     this.props.history.push({
@@ -26,53 +20,47 @@ class Home extends PureComponent {
   }
 
   render() {
-    const { input, button } = styles;
     return (
       <Formik initialValues={{ owner: '', repo: '' }} onSubmit={this.onPressButton}>
-        {/* {({ handleChange, handleSubmit, values }) => ( */}
-          {/* <View style={styling.container}> */}
-          <ImageBackground source={BackGImage} style={{height: '600px', width: '300px'}}>
-            <Button
-            style={styling.button}
-                title='Courses'
+          <View style={styling.containerMain}>
+            <View style={styling.containerButton}>
+              <Button
+                style={styling.button1}
+                title='تصفح الدورات المتاحة هنا'
                 icon={{
                   color: 'white',
-                  name: 'paper-plane',
+                  name: 'search',
                   size: 15,
                   type: 'font-awesome'
                 }}
-                // onPress={() => showAlert()}
                 onPress = {this.onPressButton}
-            />
-            {/* <Input
-              containerStyle={input.containerStyle}
-              inputStyle={input.inputStyle}
-              label='Owner'
-              onChangeText={handleChange('owner')}
-              placeholder="Github's owner"
-              value={values.owner}
-            />
-            <Input
-              containerStyle={input.containerStyle}
-              inputStyle={input.inputStyle}
-              label='Repo'
-              onChangeText={handleChange('repo')}
-              placeholder="Github's repository name"
-              value={values.repo}
-            />
-            <Button
-              title='SUBMIT'
-              icon={{
-                color: 'white',
-                name: 'paper-plane',
-                size: 15,
-                type: 'font-awesome'
-              }}
-              buttonStyle={button.containerStyle}
-              onPress={handleSubmit}
-            /> */}
-            </ImageBackground>
-          {/* </View> */}
+              />
+            </View>
+
+            <View style={styling.container}>
+              <Button
+                style={styling.button2}
+                title='تابعنا على'
+                icon={{
+                  color: 'white',
+                  name: 'instagram',
+                  size: 15,
+                  type: 'font-awesome'
+                }}
+              />
+              <Button
+                style={styling.button2}
+                title='تابعنا على'
+                icon={{
+                  color: 'white',
+                  name: 'facebook',
+                  size: 15,
+                  type: 'font-awesome'
+                }}
+                onPress = {() => { Linking.openURL('https://www.facebook.com/SilosArAcademy')}}
+              />
+            </View>
+          </View>
       </Formik>
     );
   }
@@ -81,27 +69,45 @@ class Home extends PureComponent {
 const styling = StyleSheet.create({
   container: {
     flex: 1,
-    paddingTop: 200,
-    alignItems: 'center',
+    flexDirection: 'row',
     justifyContent: 'center',
-    paddingHorizontal: 10
+    alignItems: 'stretch',
+    padding: 0
   },
-  button: {
+
+  containerButton: {
+    flex: 1,
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'stretch',
+    padding: 2
+  },
+
+  containerMain: {
+    flex: 1,
+    flexDirection: 'column',
+    justifyContent: 'center',
+    alignItems: 'stretch',
+  },
+
+  button1: {
     alignItems: 'center',
-    padding: 10,
-    borderBottomRightRadius: 0
+    padding: 2
   },
+
+  button2: {
+    alignItems: 'center',
+    padding: 2
+  },
+
   countContainer: {
     alignItems: 'center',
     padding: 50
   },
+  
   textLink: {
     color: '#FF00FF'
   },
 })
 
 export default withRouter(Home);
-// export default compose(
-//   withHeader({ title: 'الدورات المتاحة' }),
-//   withRouter
-// )(Home)

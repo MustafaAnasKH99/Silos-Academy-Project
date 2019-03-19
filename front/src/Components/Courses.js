@@ -43,8 +43,7 @@ class Courses extends React.Component {
         } else {
             console.log('is there a problem ' ,this.state.courses_list)
             return (
-                <View>
-                    <Text style={styling.text}>تصفح الدورات المتاحة هنا!</Text>
+                <View style={styling.container}>
                     {courses_list.map(course => (
                             <View>
                                 <Course
@@ -73,7 +72,8 @@ class Courses extends React.Component {
 const styling = StyleSheet.create({
     container: {
         flex: 1,
-        justifyContent: 'center'
+        justifyContent: 'center',
+        padding: 5
     },
     horizontal: {
         flexDirection: 'row',
