@@ -72,18 +72,18 @@ class Level extends React.Component{
                     <View style={styling.alertContainer}>
                             <Icon
                                 name='warning'
-                                size={24}
+                                size={20}
                                 color='black'
                             />
                             <Text>هناك اختبار أدنى هذا المستوى. تأكد ان ترفع مستوى تركيزك خلال القراءة لتتمكن من الاجاببة وتخطي المستوى  </Text>
                     </View>
                     <View style={styling.container}>
-                        <View>
+                        <View style={{paddingBottom: 30}}>
                             <Text>{level.level_name}</Text>
                             <Text>{level.article}</Text>
                         </View>
-                        <View>
-                            <Text style={{paddingTop: 20}}>{level.test_body}</Text>
+                        <View style={styling.alertContainer}>
+                            <Text style={{padding: 30}}>{level.test_body}</Text>
                         </View>
                         <Input
                             placeholder='إجابتك هنا'
@@ -133,7 +133,6 @@ class Level extends React.Component{
 
 const styling = StyleSheet.create({
     container: {
-
         alignItems: 'center',
         justifyContent: 'center',
         padding: 20,
@@ -154,11 +153,11 @@ const styling = StyleSheet.create({
         borderWidth: 5,
         borderRadius: 20,
         borderColor: '#fff',
-        padding: 5,
         flex: 2,
         flexDirection: 'row',
         alignItems: 'center',
         justifyContent: 'center',
+        padding: 5
     },
     mainBox: {
         margin: 0,

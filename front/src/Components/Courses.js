@@ -62,14 +62,15 @@ class Courses extends React.Component {
 const styling = StyleSheet.create({
     container: {
         flex: 2,
+        alignSelf: 'stretch',
         flexDirection: 'column',
         justifyContent: 'space-between',
         padding: 5,
-        backgroundColor: '#3c3c3b',
+        backgroundColor: '#dadada',
         height: '100%',
         width: '100%',
-        paddingBottom: 50,
-        paddingTop: 50,
+        paddingBottom: 150,
+        paddingTop: 20,
     },
     horizontal: {
         flexDirection: 'row',
@@ -80,16 +81,16 @@ const styling = StyleSheet.create({
         fontSize: 20,
         textAlign: 'center',
         color: '#2089dc',
-        padding: 10,
+        padding: 0,
     },
     button: {
-        margin: 5,
+        // margin: 5,
         marginTop: 0,
         borderBottomRightRadius: 0,
         borderBottomLeftRadius: 0,
     },
     backGC: {
-        backgroundColor: '#3c3c3b', 
+        backgroundColor: '#dadada', 
     }
 })
 

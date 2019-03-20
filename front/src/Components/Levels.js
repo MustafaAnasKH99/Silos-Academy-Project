@@ -49,11 +49,17 @@ class Levels extends PureComponent{
               subtitle={`${course.notes}`}
               containerStyle={{
                 backgroundColor: '#dadada',
+                alignSelf: 'center'
               }}
+          />
+          <Image
+            source={{ uri: course.img_url }}
+            style={{ width: 400, height: 200, paddingBottom: 50 }}
+            PlaceholderContent={<ActivityIndicator />}
           />
           {
             thisCourseLevels.map(level => (
-              <View style={{flex: 1, flexDirection: 'row', paddingRight: 15, paddingLeft: 15, paddingBottom: 5}}>
+              <View style={{flex: 1, flexDirection: 'row', paddingRight: 50, paddingLeft: 15, paddingBottom: 5, paddingTop: 15 }}>
                 <FlatList 
                   style={styling.list}
                   data={[{level_name: `${level.level_name}`},{article: `${level.article}`}, {test: `${level.test}`}, {expected_answer: `${level.expected_answer}`}]}
@@ -64,6 +70,7 @@ class Levels extends PureComponent{
                   )}
                   containerStyle={{
                     backgroundColor: '#dadada',
+                    paddingBottom: 100,
                   }}
                 />
                 <Button
@@ -82,11 +89,6 @@ class Levels extends PureComponent{
               </View>
             ))
           }
-          <Image
-            source={{ uri: course.img_url }}
-            style={{ width: '100%', height: 200 }}
-            PlaceholderContent={<ActivityIndicator />}
-          />
       </View>
       )
     }
@@ -98,7 +100,7 @@ const styling = StyleSheet.create({
       flex: 1,
       justifyContent: 'center',
       backgroundColor: '#dadada',
-      paddingBottom: 40,
+      paddingBottom: 100,
       borderColor: '#dadada'
     },
     horizontal: {

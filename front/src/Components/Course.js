@@ -32,17 +32,17 @@ export default class Course extends React.Component{
                     title={course.course_name}
                     subtitle={`${course.notes}`}
                     leftAvatar={{ source: { uri: course.img_url } }}
-                    titleStyle={{ color: 'white', paddingLeft: 10 }}
-                    subtitleStyle={{ color: 'white', paddingLeft: 10 }}
+                    titleStyle={{ color: 'white', paddingLeft: 10, paddingTop: 0 }}
+                    subtitleStyle={{ color: 'white', paddingLeft: 10, paddingTop: 0 }}
                     containerStyle={{
-                        backgroundColor: '#fdc300',
+                        backgroundColor: '#FDC300',
                         borderRadius: 10,
                     }}
                     rightContentContainerStyle={{
                         backgroundColor: 'white',
                     }}
                 /> 
-                <Icon style={styling.icon} name='angle-double-right' type='font-awesome' size={25} color='black' />
+                <Icon style={styling.icon} name='angle-double-right' type='font-awesome' size={25} color='white' />
             </View>
         )
     }
@@ -52,19 +52,21 @@ const styling = StyleSheet.create({
     container: {
         flex: 1,
         flexDirection: 'row',
-        // justifyContent: 'stretch',
-        paddingHorizontal: 0,
-        margin: 10,
+        justifyContent: 'stretch',
+        // paddingHorizontal: 0,
+        margin: 5,
         marginRight: 5,
         marginLeft: 5,
-        backgroundColor: '#fdc300',
+        backgroundColor: '#FDC300',
         borderRadius: 10,
+        borderWidth: 0,
+        padding: 5,
     },
     icon: {
         padding:25,
     },
     text:{
-        color: '#3c3c3b'
+        color: '#dadada'
     }
 })
 
@@ -73,5 +75,4 @@ const styling = StyleSheet.create({
 //   fetch(`${APP_URL}courses`),
 //   withRouter,
 // )(Course)
-
 // export default withHeader({ title: 'Commits' })(Course);
