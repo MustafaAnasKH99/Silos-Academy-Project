@@ -21,7 +21,7 @@ class Home extends PureComponent {
 
   render() {
     return (
-      <Formik initialValues={{ owner: '', repo: '' }} onSubmit={this.onPressButton}>
+      // <Formik initialValues={{ owner: '', repo: '' }} onSubmit={this.onPressButton}>
           <View style={styling.containerMain}>
             <View style={styling.containerButton}>
               <Button
@@ -34,6 +34,9 @@ class Home extends PureComponent {
                   type: 'font-awesome'
                 }}
                 onPress = {this.onPressButton}
+                buttonStyle={{
+                  backgroundColor: '#fdc300'
+                }}
               />
             </View>
 
@@ -47,6 +50,9 @@ class Home extends PureComponent {
                   size: 15,
                   type: 'font-awesome'
                 }}
+                buttonStyle={{
+                  backgroundColor: '#fdc300'
+                }}
               />
               <Button
                 style={styling.button2}
@@ -57,11 +63,17 @@ class Home extends PureComponent {
                   size: 15,
                   type: 'font-awesome'
                 }}
+                buttonStyle={{
+                  backgroundColor: '#fdc300',
+                }}
+                // titleStyle={{
+                //   color: '#dadada'
+                // }}
                 onPress = {() => { Linking.openURL('https://www.facebook.com/SilosArAcademy')}}
               />
             </View>
           </View>
-      </Formik>
+      /* </Formik> */
     );
   }
 }
@@ -72,7 +84,9 @@ const styling = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'stretch',
-    padding: 0
+    paddingTop: 5,
+    height: '100%',
+    width: '100%',
   },
 
   containerButton: {
@@ -80,7 +94,7 @@ const styling = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'stretch',
-    padding: 2
+    padding: 2,
   },
 
   containerMain: {
@@ -88,21 +102,19 @@ const styling = StyleSheet.create({
     flexDirection: 'column',
     justifyContent: 'center',
     alignItems: 'stretch',
+    backgroundColor: '#3c3c3b',
+    paddingBottom: 500,
+    paddingTop: 150,
   },
 
   button1: {
     alignItems: 'center',
-    padding: 2
+    padding: 2,
   },
 
   button2: {
     alignItems: 'center',
     padding: 2
-  },
-
-  countContainer: {
-    alignItems: 'center',
-    padding: 50
   },
   
   textLink: {

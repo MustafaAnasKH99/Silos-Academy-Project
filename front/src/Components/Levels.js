@@ -14,10 +14,10 @@ class Levels extends PureComponent{
     }
 
     handleSubmit = (level) => {
-        this.props.history.push({
-          pathname: `/courses/${level.level_name}`
-        });
-        console.log(this.props.history)
+      this.props.history.push({
+        pathname: `/courses/${level.level_name}`
+      });
+      console.log(this.props.history)
     }
     
     componentDidMount(){
@@ -47,6 +47,9 @@ class Levels extends PureComponent{
               key={course.id}
               title={course.course_name}
               subtitle={`${course.course_name} is ${course.notes}`}
+              containerStyle={{
+                backgroundColor: '#dadada',
+              }}
           />
           {
             thisCourseLevels.map(level => (
@@ -59,14 +62,20 @@ class Levels extends PureComponent{
                       <Text>{item.level_name}</Text>
                     </View>
                   )}
+                  containerStyle={{
+                    backgroundColor: '#dadada',
+                  }}
                 />
                 <Button
                   title={`ابدا ${level.level_name}`}
                   icon={{
-                      color: 'white',
-                      name: 'paper-plane',
-                      size: 15,
-                      type: 'font-awesome'
+                    color: 'white',
+                    name: 'paper-plane',
+                    size: 15,
+                    type: 'font-awesome'
+                  }}
+                  buttonStyle={{
+                    backgroundColor: '#fdc300',
                   }}
                   onPress={() => this.handleSubmit(level)}
                 />
@@ -88,11 +97,14 @@ const styling = StyleSheet.create({
     container: {
       flex: 1,
       justifyContent: 'center',
+      backgroundColor: '#dadada',
+      paddingBottom: 40,
+      borderColor: '#dadada'
     },
     horizontal: {
       flexDirection: 'row',
       justifyContent: 'space-around',
-      padding: 10
+      padding: 5
     },
 })
 

@@ -11,7 +11,9 @@ const containerStyle = {
   justifyContent: 'center',
   paddingHorizontal: 0,
   paddingTop: 0,
-  width: '100%'
+  border: 0,
+  width: '100%',
+  backgroundColor: '#eb5d48'
 };
 
 const centerContainerStyle = { paddingRight: 20 };
@@ -21,7 +23,8 @@ const buttonStyle = {
   height: 48,
   justifyContent: 'center',
   paddingRight: 5,
-  width: 40
+  width: 40,
+  borderWidth: 0,
 };
 
 const textStyle = { color: '#fff' };

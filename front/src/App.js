@@ -65,7 +65,7 @@ componentDidMount(){
 const styling = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center'
+    justifyContent: 'center',
   },
   horizontal: {
     flexDirection: 'row',

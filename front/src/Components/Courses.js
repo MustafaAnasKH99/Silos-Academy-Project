@@ -46,7 +46,7 @@ class Courses extends React.Component {
             return (
                 <View style={styling.container}>
                 {courses_list.map(course => (
-                        <TouchableOpacity onPress={() => this.handleSubmit(course.course_name)}>
+                        <TouchableOpacity onPress={() => this.handleSubmit(course.course_name)} style={styling.backGC}>
                             <Course
                                 course={course}
                             />
@@ -64,7 +64,12 @@ const styling = StyleSheet.create({
         flex: 2,
         flexDirection: 'column',
         justifyContent: 'space-between',
-        padding: 5
+        padding: 5,
+        backgroundColor: '#3c3c3b',
+        height: '100%',
+        width: '100%',
+        paddingBottom: 50,
+        paddingTop: 50,
     },
     horizontal: {
         flexDirection: 'row',
@@ -82,6 +87,9 @@ const styling = StyleSheet.create({
         marginTop: 0,
         borderBottomRightRadius: 0,
         borderBottomLeftRadius: 0,
+    },
+    backGC: {
+        backgroundColor: '#3c3c3b', 
     }
 })
 

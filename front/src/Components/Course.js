@@ -32,6 +32,15 @@ export default class Course extends React.Component{
                     title={course.course_name}
                     subtitle={`${course.notes}`}
                     leftAvatar={{ source: { uri: course.img_url } }}
+                    titleStyle={{ color: 'white', paddingLeft: 10 }}
+                    subtitleStyle={{ color: 'white', paddingLeft: 10 }}
+                    containerStyle={{
+                        backgroundColor: '#fdc300',
+                        borderRadius: 10,
+                    }}
+                    rightContentContainerStyle={{
+                        backgroundColor: 'white',
+                    }}
                 /> 
                 <Icon style={styling.icon} name='angle-double-right' type='font-awesome' size={25} color='black' />
             </View>
@@ -45,13 +54,17 @@ const styling = StyleSheet.create({
         flexDirection: 'row',
         // justifyContent: 'stretch',
         paddingHorizontal: 0,
-        // borderWidth: 5,
-        borderColor: '#d6d7da',
+        margin: 10,
         marginRight: 5,
         marginLeft: 5,
+        backgroundColor: '#fdc300',
+        borderRadius: 10,
     },
     icon: {
         padding:25,
+    },
+    text:{
+        color: '#3c3c3b'
     }
 })
 

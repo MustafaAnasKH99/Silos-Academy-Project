@@ -30,11 +30,9 @@ class Level extends React.Component{
         console.log('Look for level details:', this.props)
         if(level.test === null){
             return (
-                <View>
-                    <View style={styling.container}>
-                        <Text>{level.level_name}</Text>
-                        <Text>{level.article}</Text>
-                    </View> 
+                <View style={styling.container}>
+                    <Text>{level.level_name}</Text>
+                    <Text>{level.article}</Text>
                 </View>
             )
         } else {
@@ -47,7 +45,6 @@ class Level extends React.Component{
                                 color='black'
                             />
                             <Text>هناك اختبار أدنى هذا المستوى. تأكد ان ترفع مستوى تركيزك خلال القراءة لتتمكن من الاجاببة وتخطي المستوى  </Text>
-                            {/* <Text>Read carefully so you answer the question to pass this level     </Text> */}
                     </View>
                     <View style={styling.container}>
                         <Text>{level.level_name}</Text>
@@ -82,16 +79,17 @@ class Level extends React.Component{
 
 const styling = StyleSheet.create({
     container: {
-        // flex: 1,
         alignItems: 'center',
         justifyContent: 'center',
         padding: 20,
         borderWidth: 5,
         borderColor: '#d6d7da',
         margin: 5,
+        backgroundColor: '#dadada',
     },
     text:{
         padding: 5,
+        backgroundColor: '#dadada',
     },
 
     alertContainer:{

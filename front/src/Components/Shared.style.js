@@ -18,6 +18,7 @@ export default {
     display: 'flex',
     flex: 1,
     height: '100%',
-    justifyContent: 'center'
+    justifyContent: 'center',
+    borderWidth: 0,
   }
 };
