@@ -46,7 +46,7 @@ class Levels extends PureComponent{
           <ListItem
               key={course.id}
               title={course.course_name}
-              subtitle={`${course.course_name} is ${course.notes}`}
+              subtitle={`${course.notes}`}
               containerStyle={{
                 backgroundColor: '#dadada',
               }}
@@ -67,7 +67,7 @@ class Levels extends PureComponent{
                   }}
                 />
                 <Button
-                  title={`ابدا ${level.level_name}`}
+                  title={`ابدا`}
                   icon={{
                     color: 'white',
                     name: 'paper-plane',

@@ -12,8 +12,11 @@ class Level extends React.Component{
     constructor(props){
         super(props)
         this.handleButton = this.handleButton.bind(this)
+        this.nextLevel = this.nextLevel.bind(this)
         this.state={
-            answer: ''
+            answer: '',
+            status: '',
+            color: ''
         }
     }
     
@@ -21,6 +24,34 @@ class Level extends React.Component{
         console.log(this.state.answer)
         Alert.alert(
             this.state.answer
+        )
+        try{
+            let answer = eval(this.state.answer + this.props.level.test)
+            console.log(answer)
+            if(answer == this.props.level.expected_answer){
+                alert('yaaaaay')
+                this.setState({
+                    status: 'أحسنت!',
+                    color:'green'
+                })
+            } else {
+                
+            }
+        } catch(e){
+            // this.setState({err: e.error})
+            // alert('nope')
+            (this.setState({
+                status: 'حاول مجدداً',
+                color: 'red'
+            }))
+        }
+    }
+
+    nextLevel(){
+        if(this.state.status === 'أحسنت!'){
+            alert('moving to next level')
+        } else (
+            alert('keep trying!')
         )
     }
 
@@ -47,8 +78,13 @@ class Level extends React.Component{
                             <Text>هناك اختبار أدنى هذا المستوى. تأكد ان ترفع مستوى تركيزك خلال القراءة لتتمكن من الاجاببة وتخطي المستوى  </Text>
                     </View>
                     <View style={styling.container}>
-                        <Text>{level.level_name}</Text>
-                        <Text>{level.article}</Text>
+                        <View>
+                            <Text>{level.level_name}</Text>
+                            <Text>{level.article}</Text>
+                        </View>
+                        <View>
+                            <Text style={{paddingTop: 20}}>{level.test_body}</Text>
+                        </View>
                         <Input
                             placeholder='إجابتك هنا'
                             leftIcon={
@@ -59,17 +95,35 @@ class Level extends React.Component{
                                 />
                             }
                             onChange={(e) => this.setState({answer: e.target.value})}
+                            containerStyle={{paddingTop: 20}}
                         />
-                        <Button 
-                            title='قدم اجابتك'
-                            icon={{
-                                color: 'white',
-                                name:'paper-plane',
-                                size: 15,
-                                type: 'font-awesome'
-                            }}
-                            onPress={this.handleButton}
-                        />
+                        <View style={{flex: 2, flexDirection: 'row'}}>
+                            <Button 
+                                title='قدم اجابتك'
+                                icon={{
+                                    color: 'white',
+                                    name:'paper-plane',
+                                    size: 15,
+                                    type: 'font-awesome'
+                                }}
+                                onPress={this.handleButton}
+                                buttonStyle={{backgroundColor: '#fdc300'}}
+                                containerStyle={{ padding: 5 }}
+                            />
+
+                            <Button
+                                title={`${this.state.status}`}
+                                icon={{
+                                    color: 'white',
+                                    name:'paper-plane',
+                                    size: 15,
+                                    type: 'font-awesome'
+                                }}
+                                onPress={this.nextLevel}
+                                buttonStyle={{backgroundColor: this.state.color}}
+                                containerStyle={{ padding: 5 }}
+                            />
+                        </View>
                     </View> 
                 </View>
             )
@@ -79,12 +133,14 @@ class Level extends React.Component{
 
 const styling = StyleSheet.create({
     container: {
+
         alignItems: 'center',
         justifyContent: 'center',
         padding: 20,
+        paddingBottom: 350,
         borderWidth: 5,
         borderColor: '#d6d7da',
-        margin: 5,
+        margin: 0,
         backgroundColor: '#dadada',
     },
     text:{
@@ -93,7 +149,7 @@ const styling = StyleSheet.create({
     },
 
     alertContainer:{
-        backgroundColor: 'rgba(255, 82, 82, 0.8)',
+        backgroundColor: '#66b8d9',
         color: '#fff',
         borderWidth: 5,
         borderRadius: 20,
@@ -103,6 +159,11 @@ const styling = StyleSheet.create({
         flexDirection: 'row',
         alignItems: 'center',
         justifyContent: 'center',
+    },
+    mainBox: {
+        margin: 0,
+        borderWidth: 0,
+        backgroundColor: '#dadada'
     }
 })
 
